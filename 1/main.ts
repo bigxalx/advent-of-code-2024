@@ -1,26 +1,8 @@
-async function transformInputFileToLists(
-  inputPath: string
-): Promise<{ list1: number[]; list2: number[] }> {
-  // Read the list from inputPath
-  const inputString = await Bun.file(inputPath).text();
-  // Split the input string into lines
-  const lines = inputString.trim().split("\n");
+import { transformInputFileToLists } from "../utils/inputHandler";
 
-  // Use map to create two separate lists
-  // Finally sort in asc order
-  const list1 = lines
-    .map((line) => parseInt(line.split(/\s+/)[0], 10))
-    .sort((a, b) => a - b);
-  const list2 = lines
-    .map((line) => parseInt(line.split(/\s+/)[1], 10))
-    .sort((a, b) => a - b);
-
-  // Sort and return
-  return { list1, list2 };
-}
+const { list1, list2 } = await transformInputFileToLists("1/input.txt");
 
 // MARK: - Part 1
-const { list1, list2 } = await transformInputFileToLists("input.txt");
 // Calculate differences for each pair and add them up
 const differences = list1.map((value, index) => Math.abs(value - list2[index]));
 // Sum up all differences
