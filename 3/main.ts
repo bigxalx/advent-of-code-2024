@@ -83,9 +83,4 @@ console.log(
   sumOfMultiplications(String(processString2(inputString)))
 );
 
-const process1 = String(processString2(inputString))
-const process2 = String(processString(inputString))
-
-// write both strings to a txt file each with bun
-await Bun.write("3/process1.txt", process1);
-await Bun.write("3/process2.txt", process2);
+// Updated implementation to processString2. Keep old implementation for learning purposes
